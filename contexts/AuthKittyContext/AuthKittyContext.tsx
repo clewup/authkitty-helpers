@@ -90,7 +90,7 @@ export function AuthKittyContextProvider ({ children }: { children: ReactNode })
     const decodedAccessToken = jwt.decode(accessToken) as AccessTokenType
     const currentTimestamp = moment().unix()
 
-    if (currentTimestamp < decodedAccessToken.exp) {
+    if (currentTimestamp < decodedAccessToken?.exp) {
       fetch(`${AK_API_URL}/user`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
