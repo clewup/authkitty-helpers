@@ -1,6 +1,5 @@
 'use client'
 
-import { GrantTypes } from '@/lib/authkitty-helpers/constants/grantTypes'
 import { type AccessTokenType, type AuthTokensType } from '@/lib/authkitty-helpers/types/tokenTypes'
 import { type UserType } from '@/lib/authkitty-helpers/types/userType'
 import jwt from 'jsonwebtoken'
