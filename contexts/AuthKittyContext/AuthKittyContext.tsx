@@ -1,7 +1,7 @@
 'use client'
 
-import { type AccessTokenType, type AuthTokensType } from '@/lib/authkitty-helpers/types/tokenTypes'
-import { type UserType } from '@/lib/authkitty-helpers/types/userType'
+import { type AccessTokenType, type AuthTokensType } from '../../types/tokenTypes'
+import { type UserType } from '../../types/userType'
 import jwt from 'jsonwebtoken'
 import moment from 'moment/moment'
 import { useRouter, useSearchParams } from 'next/navigation'

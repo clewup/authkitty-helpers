@@ -1,4 +1,4 @@
-import { type UserType } from '@/lib/authkitty-helpers/types/userType'
+import { type UserType } from '../types/userType'
 
 export interface AuthTokensType {
   accessToken: string
