@@ -4,7 +4,7 @@ import { type AccessTokenType, type AuthTokensType } from '../../types/tokenType
 import { type UserType } from '../../types/userType'
 import jwt from 'jsonwebtoken'
 import moment from 'moment/moment'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React, {
   createContext,
   type Dispatch,
@@ -30,13 +30,15 @@ const AK_API_URL = 'https://api.authkitty.com'
 
 export function AuthKittyContextProvider ({ children }: { children: ReactNode }) {
   const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
 
   const [user, setUser] = useState<UserType | null>(null)
 
   useEffect(() => {
     const refreshToken = localStorage.getItem('AKR')
 
-    if (refreshToken !== null) {
+    if (refreshToken) {
       void exchangeRefreshToken(refreshToken)
     }
   }, [])
@@ -44,7 +46,8 @@ export function AuthKittyContextProvider ({ children }: { children: ReactNode })
   useEffect(() => {
     const code = searchParams.get('code')
 
-    if (code !== null) {
+    if (code) {
+      router.push(pathname)
       void exchangeAuthorizationCode(code)
     }
   }, [searchParams])
